@@ -1,0 +1,23 @@
+extends layout
+include ./partials/features.pug
+
+block content
+  h1(class="visually-hidden") Интернет-магазин "ТЕХНОМАРТ"
+  section(class="features container")
+    h2(class="visually-hidden") Наши преимущества
+    -
+      const featuresList = {
+        features: [
+          {title: 'Материалы', link: 'на любой вкус', isNew: true},
+          {title: 'Инструмент', link: 'на все случаи', isNew: false},
+          {title: 'Техника', link: 'для стройки', isNew: false},
+          {title: 'Скидки 50 %', link: 'на 350 товаров', isNew: false},
+          {title: 'Доставка', link: 'бесплатно', isNew: false},
+        ],
+        slides: [
+          {title: 'перфораторы', desc: 'Настоящие мужские игрушки', isActive: true},
+          {title: 'дрели', desc: 'Соседям на радость!', isActive: false},
+        ],
+      };
+
+    +features(featuresList)

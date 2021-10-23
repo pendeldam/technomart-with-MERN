@@ -1,0 +1,21 @@
+{
+  "name": "node-lab",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "concurrently --kill-others \"nodemon ./server.js\" \"browser-sync start --config bs-config.js\""
+  },
+  "nodemonConfig": {
+    "ext": "js"
+  },
+  "dependencies": {
+    "express": "~4.16.1",
+    "mongoose": "^6.0.12",
+    "pug": "^3.0.2",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.27.5",
+    "concurrently": "^6.3.0"
+  }
+}
