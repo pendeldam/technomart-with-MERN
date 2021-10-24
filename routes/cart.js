@@ -4,8 +4,7 @@ const Product = require("../models/product");
 const CartItem = require("../models/cart-item");
 
 // @route   GET cart
-// @desc    get all items in cart
-
+// @desc    get all items in the cart
 router.get("/", async (req, res) => {
   try {
     const items = await CartItem.find();
@@ -17,9 +16,8 @@ router.get("/", async (req, res) => {
   }
 });
 
-// @route   POST cart
-// @desc    post item in cart
-
+// @route   POST cart/:id
+// @desc    add item to the cart
 router.post("/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -42,13 +40,32 @@ router.post("/:id", async (req, res) => {
   }
 });
 
-// @route   DELETE cart
-// @desc    delete item in cart
+// @route   PUT cart/:id
+// @desc    update item in the cart
+router.put("/", async (req, res) => {
+  try {
+    const item = await CartItem
+      .findOneAndUpdate(
+        {link: req.body.link},
+        {$inc:{count: req.body.action}},
+        {new: true}
+        );
 
+    res.json(item);
+  } catch (err) {
+    res.status(404).json({
+      success: false,
+      msg: "object not found",
+    });
+  }
+});
+
+// @route   DELETE cart
+// @desc    delete item from the cart
 router.delete("/:id", async (req, res) => {
   try {
     const item = await CartItem.findOneAndDelete(req.params.id);
-    
+
     res.json({
       msg: item._id,
       success: true,
