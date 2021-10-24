@@ -35,30 +35,21 @@ block content
           fieldset(class="catalog-filters__vendors")
             legend производители:
             ul(class="catalog-filters__list")
-              -
-                const vendorFilters = [
-                  {id: 'bosch', name: 'bosch'},
-                  {id: 'aeg', name: 'aeg'},
-                  {id: 'makita', name: 'makita'},
-                  {id: 'dewalt', name: 'dewalt'},
-                  {id: 'hilti', name: 'hilti'},
-                ];
-
-              each filter in vendorFilters
+              each vendor in filters
                 li
-                  input(class="filter-input-checkbox visually-hidden" type="checkbox" name= filter.id id=`filter-${filter.name}`)
-                  label(for=`filter-${filter.id}`)= filter.name
+                  input(class="filter-input-checkbox visually-hidden" type="checkbox" name= vendor id=`filter-${vendor}`)
+                  label(for=`filter-${vendor}`)= vendor
 
           fieldset(class="catalog-filters__power-supply")
             legend питание:
             ul(class="catalog-filters__list")
               -
-                const powerTypeFilters = [
+                const powerSupplyFilters = [
                   {id: 'battery', name: 'аккумуляторные'},
                   {id: 'main-supply', name: 'сетевые'}
                 ];
 
-              each filter in powerTypeFilters
+              each filter in powerSupplyFilters
                 li
                   input(class="filter-input-radio visually-hidden" type="radio" name="power-supply-type" value=`${filter.id}` id=`filter-${filter.id}`)
                   label(for=`filter-${filter.id}`)= filter.name
@@ -72,14 +63,14 @@ block content
             div(class="catalog-sorting__types-wrapper")
               -
                 const sortTypes = [
-                  {id: 'price', name: 'по цене'},
+                  {id: 'price', name: 'по цене', checked: true},
                   {id: 'type', name: 'по типу'},
                   {id: 'function', name: 'по функционалу'}
                 ];
 
               each item in sortTypes
                 div(class="catalog-sorting__type")
-                  input(class="visually-hidden" type="radio" name="sort-type" id=`sort-by-${item.id}` checked)
+                  input(class="visually-hidden" type="radio" name="sort-type" id=`sort-by-${item.id}` checked= item.checked)
                   label(for=`sort-by-${item.id}`)= item.name
 
             div(class="catalog-sorting__direction")

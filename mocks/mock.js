@@ -30,13 +30,20 @@ function generateProducts(count, type) {
     const name = `${utils.setCapitalLetter(vendor)} ${model}`;
     const image = `${vendor}_${utils.formatImageName(model)}`;
 
+    const isBatteryOnly = Math.random() > 0.5 ? true : false;
+    const powerSupply = {
+      isBatteryOnly,
+      value: isBatteryOnly ? 'аккумуляторный' : 'сетевой',
+    };
+
     product = {
       type,
       vendor,
       model,
       name,
       image,
-      isNew: Math.random() > 0.5 ? true : false,
+      powerSupply,
+      isNewOffer: Math.random() > 0.5 ? true : false,
       price: getRandomInteger(999, 9999),
     };
 
@@ -53,7 +60,8 @@ products.forEach((product) => {
     model: product.model,
     name: product.name,
     image: product.image,
-    isNewOffer: product.isNew,
+    powerSupply: product.powerSupply,
+    isNewOffer: product.isNewOffer,
     price: product.price,
   });
 

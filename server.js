@@ -34,10 +34,9 @@ const indexRouter = require('./routes/index');
 const catalogRouter = require('./routes/catalog');
 const cartRouter = require('./routes/cart');
 
-
 app.use('/', indexRouter);
 app.use('/catalog', catalogRouter);
 app.use('/cart', cartRouter);
 app.use('*', (req, res) => res.render('error'));
 
-app.listen(port);
+app.listen(port, () => console.log(`Server started on port ${port}`));

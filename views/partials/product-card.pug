@@ -1,7 +1,7 @@
 mixin productCard(props)
   -
-    const {name, image, price, isNew, _id} = props;
-    const cardClassName = `catalog-product-card ${isNew ? 'catalog-product-card--new' : ''}`;
+    const {name, image, price, isNewOffer, _id} = props;
+    const cardClassName = `catalog-product-card ${isNewOffer ? 'catalog-product-card--new' : ''}`;
 
   li(class=cardClassName)
     div(class="catalog-product-card__popup")
