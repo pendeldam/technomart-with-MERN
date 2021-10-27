@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const baseSchema = require("../product");
+const baseSchema = require("../product-item");
 
 const ChainsawSchema = new mongoose.Schema(
   {
@@ -11,4 +11,4 @@ const ChainsawSchema = new mongoose.Schema(
   baseSchema.options
 );
 
-module.exports = Chainsaw = baseSchema.Product.discriminator("chainsaw", ChainsawSchema);
+module.exports = Chainsaw = baseSchema.model.discriminator("chainsaw", ChainsawSchema);

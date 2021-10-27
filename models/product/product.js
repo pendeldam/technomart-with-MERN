@@ -1,30 +1,14 @@
 const mongoose = require("mongoose");
+const ProductItem = require("../product-item/product-item");
 
-const options = { discriminatorKey: "type" };
-
-const ProductSchema = new mongoose.Schema(
-  {
-    vendor: {
-      type: String,
-      required: true,
-    },
-    model: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    price: {
-      type: Number,
-      required: true,
-    },
-    isNewOffer: Boolean,
-    image: String,
+const ProductSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
   },
-  options
-);
+  vendors: [String],
+  count: Number,
+  catalog: [ProductItem.schema],
+});
 
-exports.Product = mongoose.model("Product", ProductSchema);
-exports.options = options;
+module.exports = Product = mongoose.model("product", ProductSchema);

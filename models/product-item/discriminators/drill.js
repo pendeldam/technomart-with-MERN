@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const baseSchema = require("../product");
+const baseSchema = require("../product-item");
 
 const DrillSchema = new mongoose.Schema(
   {
@@ -11,4 +11,4 @@ const DrillSchema = new mongoose.Schema(
   baseSchema.options
 );
 
-module.exports = Drill = baseSchema.Product.discriminator("drill", DrillSchema);
+module.exports = Drill = baseSchema.model.discriminator("drill", DrillSchema);

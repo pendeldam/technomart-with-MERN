@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const baseSchema = require("../product");
+const baseSchema = require("../product-item");
 
 const PerforatorSchema = new mongoose.Schema(
   {
@@ -11,4 +11,4 @@ const PerforatorSchema = new mongoose.Schema(
   baseSchema.options
 );
 
-module.exports = Perforator = baseSchema.Product.discriminator("perforator", PerforatorSchema);
+module.exports = Perforator = baseSchema.model.discriminator("perforator", PerforatorSchema);
