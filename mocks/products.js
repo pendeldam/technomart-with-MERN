@@ -2,14 +2,12 @@ const utils = require("../utils");
 
 // mongoDB connection
 const mongoose = require("mongoose");
-/* const MONGO_DB_URI = require("../const").MONGO_DB_URI;
-mongoose.connect(MONGO_DB_URI); */
-
-const MONGO_ATLAS_URI =
-  "mongodb+srv://daddy:oiGbw2h1YlBLmb52@cluster0.l5vm3.mongodb.net/technomart?retryWrites=true&w=majority";
+const MONGO_DB_URI = require("../const").MONGO_DB_URI;
+const MONGO_ATLAS_URI = require("./const").MONGO_ATLAS_URI
+const Product = require("../models/product");
 
 mongoose
-  .connect(MONGO_ATLAS_URI, {
+  .connect(MONGO_DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -52,8 +50,6 @@ mongoose
     });
   })
   .catch((err) => console.log(err));
-
-const Product = require("../models/product/product");
 
 // mock variables
 const PRODUCT_COUNT = 10;

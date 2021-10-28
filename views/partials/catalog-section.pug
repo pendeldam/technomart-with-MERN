@@ -1,0 +1,5 @@
+mixin catalogSection(props)
+  - const {name} = props;
+
+  li
+    a(class="site-link" href=`/catalog/${name}` aria-label=`на страницу ${name}`)= name
