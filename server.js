@@ -23,7 +23,7 @@ const MONGO_DB_URI = require("./const").MONGO_DB_URI;
 const MONGO_ATLAS_URI = require("./const").MONGO_ATLAS_URI
 
 mongoose
-  .connect(MONGO_ATLAS_URI, {
+  .connect(MONGO_DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -31,7 +31,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // routes
-const indexRouter = require("./routes/index");
+const indexRouter = require("./routes/home");
 const catalogRouter = require("./routes/catalog");
 const cartRouter = require("./routes/cart");
 
