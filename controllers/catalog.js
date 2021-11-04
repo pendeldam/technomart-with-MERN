@@ -2,8 +2,10 @@ const Product = require("../models/product");
 
 exports.getProduct = async function (req, res) {
   try {
-    const type = await Product.findOne({ name: req.params.name });
-    const product = type.catalog.id(req.params.id);
+    const product = await Product
+      .findOne({ name: req.params.name })
+      .select("catalog")
+      .then((result) => result.catalog.id(req.params.id));
 
     res.send(product);
   } catch (err) {

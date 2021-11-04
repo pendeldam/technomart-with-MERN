@@ -14,9 +14,11 @@ exports.getItems = async (req, res) => {
 
 exports.addItem = async (req, res) => {
   try {
-    const type = await Product.findOne({ name: req.body.type });
-    const product = type.catalog.id(req.body.id);
-    
+    const product = await Product
+      .findOne({ name: req.body.type })
+      .select("catalog")
+      .then((result) => result.catalog.id(req.body.id));
+
     const item = new CartItem({
       name: product.name,
       price: product.price,
