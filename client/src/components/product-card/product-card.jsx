@@ -26,7 +26,13 @@ function ProductCard({ card }) {
           </button>
         </div>
       )}
-      <img src={img} width="184" height="164" alt={name} />
+      <img
+        className="catalog-product-card__image"
+        src={img}
+        width="184"
+        height="164"
+        alt={name}
+      />
       <h3>
         {type}
         {name}

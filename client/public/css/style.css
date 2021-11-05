@@ -1450,13 +1450,14 @@ img {
 
 .catalog-product-card__popup {
   margin-top: 40px;
+  position: absolute;
 }
 
-.catalog-product-card__popup + img {
-  display: none;
+.catalog-product-card__popup + .catalog-product-card__image {
+  opacity: 0;
 }
 
-.catalog-product-card img {
+.catalog-product-card__image {
   width: 165px;
   height: 165px;
   object-fit: scale-down;
