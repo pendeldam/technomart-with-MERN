@@ -1449,11 +1449,14 @@ img {
 }
 
 .catalog-product-card__popup {
-  display: none;
   margin-top: 40px;
 }
 
-.catalog-product-card images {
+.catalog-product-card__popup + img {
+  display: none;
+}
+
+.catalog-product-card img {
   width: 165px;
   height: 165px;
   object-fit: scale-down;

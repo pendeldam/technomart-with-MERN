@@ -1,5 +1,6 @@
 import React from "react";
 import PromoSlider from "../promo-slider/promo-slider";
+import { setCapitalLetter } from "../../utils";
 
 function Features() {
   const featuresList = [
@@ -16,7 +17,7 @@ function Features() {
       <div className="features-list">
         {featuresList.map(({ name, label, link }) => (
           <div key={name} className="features-list__item">
-            <p>{name}</p>
+            <p>{setCapitalLetter(name)}</p>
             <a className="site-link features-link" href={link}>
               {label}
             </a>
