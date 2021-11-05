@@ -126,7 +126,7 @@ img {
   display: block;
   width: 220px;
   height: 42px;
-  background: url("../images/misc/logo.svg") var(--basic-red) no-repeat center center;
+  background: url("../img/misc/logo.svg") var(--basic-red) no-repeat center center;
 }
 
 .site-logo:active {
@@ -172,7 +172,7 @@ img {
   font-size: 17px;
   line-height: 18px;
   color: var(--basic-white);
-  background: url(../images/misc/red-button.svg) no-repeat;
+  background: url(../img/misc/red-button.svg) no-repeat;
   box-sizing: border-box;
   padding: 10px 15px 0 0;
 }
@@ -223,7 +223,7 @@ img {
 /* main header */
 
 .main-header {
-  background-image: url("../images/misc/background.jpg");
+  background-image: url("../img/misc/background.jpg");
   font-family: "Cuprum", Arial, sans-serif;
 }
 
@@ -300,7 +300,7 @@ img {
 }
 
 .main-header__bookmarks::before {
-  content: url("../images/icons/bookmark.svg");
+  content: url("../img/icons/bookmark.svg");
   opacity: 0.3;
   position: absolute;
   top: 12px;
@@ -324,7 +324,7 @@ img {
 }
 
 .main-header__cart::before {
-  content: url("../images/icons/cart.svg");
+  content: url("../img/icons/cart.svg");
   opacity: 0.3;
   position: absolute;
   top: 10px;
@@ -393,7 +393,7 @@ img {
   line-height: 30px;
   color: var(--basic-red);
   text-align: center;
-  background: url("../images/icons/phone.png") no-repeat 35px center;
+  background: url("../img/icons/phone.png") no-repeat 35px center;
   padding-left: 25px;
 }
 
@@ -594,28 +594,28 @@ img {
 
 .features-list__item:nth-child(1) {
   grid-area: card-1;
-  background: url("../images/icons/feature-bucket.png") var(--basic-dark-yellow) no-repeat 217px;
+  background: url("../img/icons/feature-bucket.png") var(--basic-dark-yellow) no-repeat 217px;
   position: relative;
 }
 
 .features-list__item:nth-child(2) {
   grid-area: card-2;
-  background: url("../images/icons/feature-drill.png") var(--basic-blue) no-repeat 198px;
+  background: url("../img/icons/feature-drill.png") var(--basic-blue) no-repeat 198px;
 }
 
 .features-list__item:nth-child(3) {
   grid-area: card-3;
-  background: url("../images/icons/feature-tractor.png") var(--basic-pink) no-repeat 196px;
+  background: url("../img/icons/feature-tractor.png") var(--basic-pink) no-repeat 196px;
 }
 
 .features-list__item:nth-child(4) {
   grid-area: card-4;
-  background: url("../images/icons/feature-cart.png") var(--basic-light-green) no-repeat 201px;
+  background: url("../img/icons/feature-cart.png") var(--basic-light-green) no-repeat 201px;
 }
 
 .features-list__item:nth-child(5) {
   grid-area: card-5;
-  background: url("../images/icons/feature-truck.png") var(--basic-yellow) no-repeat 195px;
+  background: url("../img/icons/feature-truck.png") var(--basic-yellow) no-repeat 195px;
 }
 
 .features-list__item p {
@@ -653,11 +653,11 @@ img {
 }
 
 .promo-slider__slide-1 {
-  background: url("../images/slider/perforators.jpg") no-repeat;
+  background: url("../img/slider/perforators.jpg") no-repeat;
 }
 
 .promo-slider__slide-2 {
-  background: url("../images/slider/drills.jpg") no-repeat;
+  background: url("../img/slider/drills.jpg") no-repeat;
 }
 
 .promo-slider__list {
@@ -861,7 +861,7 @@ img {
 }
 
 .services-list::after {
-  content: url("../images/misc/services-shadow.png");
+  content: url("../img/misc/services-shadow.png");
   position: absolute;
   top: -45px;
   right: 0;
@@ -914,15 +914,15 @@ img {
 }
 
 .services-desc-list__item:nth-child(1) {
-  background: url("../images/misc/delivery.png") no-repeat right 20px;
+  background: url("../img/misc/delivery.png") no-repeat right 20px;
 }
 
 .services-desc-list__item:nth-child(2) {
-  background: url("../images/misc/warranty.png") no-repeat 230px 0;
+  background: url("../img/misc/warranty.png") no-repeat 230px 0;
 }
 
 .services-desc-list__item:nth-child(3) {
-  background: url("../images/misc/credit.png") no-repeat 155px 0;
+  background: url("../img/misc/credit.png") no-repeat 155px 0;
 }
 
 .services-desc-list__item--active {
@@ -1238,7 +1238,7 @@ img {
 }
 
 .catalog-filters__vendors label::before {
-  content: url("../images/icons/checkbox-off.svg");
+  content: url("../img/icons/checkbox-off.svg");
   position: absolute;
   top: 2px;
   left: -31px;
@@ -1246,7 +1246,7 @@ img {
 }
 
 .catalog-filters__power-supply label::before {
-  content: url("../images/icons/radio-off.svg");
+  content: url("../img/icons/radio-off.svg");
   position: absolute;
   top: 6px;
   left: -30px;
@@ -1254,11 +1254,11 @@ img {
 }
 
 .catalog-filters__vendors input:checked + label::before {
-  content: url("../images/icons/checkbox-on.svg");
+  content: url("../img/icons/checkbox-on.svg");
 }
 
 .catalog-filters__power-supply input:checked + label::before {
-  content: url("../images/icons/radio-on.svg");
+  content: url("../img/icons/radio-on.svg");
 }
 
 .catalog-filters__vendors input:hover + label::before,
@@ -1427,7 +1427,7 @@ img {
 .catalog-product-card--new::after {
   content: "";
   position: absolute;
-  background: url("../images/icons/label-new.png") no-repeat;
+  background: url("../img/icons/label-new.png") no-repeat;
   top: 0px;
   right: -1px;
   width: 70px;
@@ -1492,7 +1492,7 @@ img {
 }
 
 .catalog-product-card__buy-btn span::before {
-  content: url("../images/icons/cart.svg");
+  content: url("../img/icons/cart.svg");
   opacity: 0.3;
   padding-right: 10px;
 }
@@ -1748,15 +1748,15 @@ img {
 }
 
 .social-link-vk {
-  background: url("../images/icons/social/vk.png") no-repeat center;
+  background: url("../img/icons/social/vk.png") no-repeat center;
 }
 
 .social-link-fb {
-  background: url("../images/icons/social/fb.png") no-repeat center;
+  background: url("../img/icons/social/fb.png") no-repeat center;
 }
 
 .social-link-insta {
-  background: url("../images/icons/social/instagram.png") no-repeat center;
+  background: url("../img/icons/social/instagram.png") no-repeat center;
 }
 
 /* modal */
