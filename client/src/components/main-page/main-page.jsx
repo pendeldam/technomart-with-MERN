@@ -1,6 +1,7 @@
 import Header from "../header/header";
 import Features from "../features/features";
 import ProductCard from "../product-card/product-card";
+import Footer from "../footer/footer";
 import { popularGoods } from "../../mocks";
 
 function MainPage() {
@@ -22,6 +23,7 @@ function MainPage() {
           ))}
         </ul>
       </section>
+      <Footer />
     </div>
   );
 }
