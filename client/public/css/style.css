@@ -1371,8 +1371,12 @@ img {
   fill: var(--basic-black);
 }
 
-.catalog-sorting__direction label[for="sort-direction-down"] {
+.catalog-sorting__direction label[for="sort-direction-descend"] {
   padding-left: 20px;
+}
+
+.catalog-sorting__direction label[for="sort-direction-descend"] svg {
+  transform: rotateX(180deg);
 }
 
 .catalog-sorting__direction input:checked + label > svg {
