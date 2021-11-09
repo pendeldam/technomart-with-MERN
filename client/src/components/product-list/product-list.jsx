@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsByType } from "../../store/api-actions";
-import { getProducts } from "../../store/selectors/appData";
+import { getSortedProducts } from "../../store/selectors/appData";
 import { getIsDataLoaded } from "../../store/selectors/appState";
 import Header from "../header/header";
 import Footer from "../footer/footer";
@@ -17,7 +17,7 @@ import { CONNECTION_STATUS } from "../../const";
 function ProductList() {
   const dispatch = useDispatch();
   const { type } = useParams();
-  const products = useSelector(getProducts);
+  const sortedProducts = useSelector(getSortedProducts);
   const isDataLoaded = useSelector(getIsDataLoaded);
 
   useEffect(() => dispatch(fetchProductsByType(type)), [dispatch]);
@@ -40,7 +40,7 @@ function ProductList() {
             <section className="catalog-goods">
               <h2 className="visually-hidden">Список товаров</h2>
               <ul className="catalog-goods__list">
-                {products.map((product) => (
+                {sortedProducts.map((product) => (
                   <ProductCard key={product._id} product={product} />
                 ))}
               </ul>

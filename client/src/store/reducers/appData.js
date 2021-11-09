@@ -2,14 +2,19 @@ import { createReducer } from "@reduxjs/toolkit";
 import {
   getProductById,
   getProductsByType,
-  getCatalogSections
+  getCatalogSections,
+  setSortType,
+  setSortDirection
 } from "../actions";
+import { SortTypes, SortDirection } from "../../const";
 
 const initialState = {
   product: null,
   products: [],
   sections: [],
   breadcrumbs: [],
+  sortType: SortTypes.PRICE,
+  sortDirection: SortDirection.ASCEND,
 };
 
 export const appData = createReducer(initialState, (builder) => {
@@ -24,5 +29,11 @@ export const appData = createReducer(initialState, (builder) => {
     })
     .addCase(getCatalogSections, (state, action) => {
       state.sections = action.payload;
+    })
+    .addCase(setSortType, (state, action) => {
+      state.sortType = action.payload;
+    })
+    .addCase(setSortDirection, (state, action) => {
+      state.sortDirection = action.payload;
     });
 });

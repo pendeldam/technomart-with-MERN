@@ -5,6 +5,8 @@ export const ActionType = {
   GET_PRODUCT_BY_ID: 'data/GET_PRODUCT_BY_ID',
   GET_PRODUCTS_BY_TYPE: 'data/GET_PRODUCTS_BY_TYPE',
   GET_CATALOG_SECTIONS: 'data/GET_CATALOG_SECTIONS',
+  SET_SORT_TYPE: 'data/SET_SORT_TYPE',
+  SET_SORT_DIRECTION: 'data/SET_SORT_DIRECTION',
 };
 
 export const getProductById = createAction(
@@ -25,4 +27,14 @@ export const getCatalogSections = createAction(
 export const setConnectionStatus = createAction(
   ActionType.CONNECTION_STATUS,
   (status) => ({payload: status})
+);
+
+export const setSortType = createAction(
+  ActionType.SET_SORT_TYPE,
+  (type) => ({payload: type}),
+);
+
+export const setSortDirection = createAction(
+  ActionType.SET_SORT_DIRECTION,
+  (direction) => ({payload: direction}),
 );
