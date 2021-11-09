@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { AppRoute } from "../../const";
 
-function ProductCard({ card }) {
-  const { id, type, name, oldPrice, newPrice, img, isNewOffer } = card;
+function ProductCard({ product }) {
+  const { _id, name, price, image, isNewOffer } = product;
   const [cardPopup, setCardPopup] = useState(false);
 
   return (
@@ -28,22 +27,19 @@ function ProductCard({ card }) {
       )}
       <img
         className="catalog-product-card__image"
-        src={img}
+        src={`img/catalog/${image}.jpg`}
         width="184"
         height="164"
         alt={name}
       />
-      <h3>
-        {type}
-        {name}
-      </h3>
-      <p>{oldPrice}&nbsp;P.</p>
+      <h3>{name}</h3>
+      <p>{price + 3500}&nbsp;P.</p>
       <Link
         className="catalog-link"
-        to={`${AppRoute.CATALOG}/${id}`}
+        to={_id}
         aria-label={`на страницу ${name}`}
       >
-        {newPrice}&nbsp;P.
+        {price}&nbsp;P.
       </Link>
     </li>
   );

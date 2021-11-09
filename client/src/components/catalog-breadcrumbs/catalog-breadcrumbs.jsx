@@ -1,10 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { getBreadcrumbs } from "../../store/selectors/appData";
+import { AppRoute } from "../../const";
 
 function CatalogBreadcrumbs() {
+  const breadcrumbs = useSelector(getBreadcrumbs);
+
   return (
     <ul className="catalog-breadcrumbs">
       <li>
-        <a href="index.html">
+        <a href={AppRoute.ROOT}>
           <svg
             width="14"
             height="12"
@@ -17,14 +22,13 @@ function CatalogBreadcrumbs() {
         </a>
       </li>
       <li>
-        <a>каталог</a>
+        <a href={`/${AppRoute.CATALOG}`}>каталог</a>
       </li>
-      <li>
-        <a href="#">инструмент</a>
-      </li>
-      <li>
-        <a href="#">перфораторы</a>
-      </li>
+      {breadcrumbs.map(({url, category}) => (
+        <li key={url}>
+          <a href={`/${url}`}>{category}</a>
+        </li>
+      ))}
     </ul>
   );
 }

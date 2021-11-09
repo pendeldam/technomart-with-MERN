@@ -1,25 +1,30 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProductById } from "../../store/api-actions";
 import { getIsDataLoaded } from "../../store/selectors/appState";
-import { getSections } from "../../store/selectors/appData";
-import { fetchCatalogSections } from "../../store/api-actions";
+import { getProduct } from "../../store/selectors/appData";
 import Header from "../header/header";
-import CatalogBreadcrumbs from "../catalog-breadcrumbs/catalog-breadcrumbs";
 import Footer from "../footer/footer";
+import CatalogBreadcrumbs from "../catalog-breadcrumbs/catalog-breadcrumbs";
 import LoadSpinner from "../load-spinner/load-spinner";
 import { CONNECTION_STATUS } from "../../const";
 
-function CatalogPage() {
+function ProductPage() {
   const dispatch = useDispatch();
+  const { type, id } = useParams();
+  const product = useSelector(getProduct);
   const isDataLoaded = useSelector(getIsDataLoaded);
-  const sections = useSelector(getSections);
 
-  useEffect(() => dispatch(fetchCatalogSections()), []);
+  useEffect(() => {
+    dispatch(fetchProductById(type, id));
+  }, [dispatch]);
 
-  if (isDataLoaded === CONNECTION_STATUS.WAIT) {
+  if (!product || isDataLoaded === CONNECTION_STATUS.WAIT) {
     return <LoadSpinner />;
   }
+
+  const {name} = product.content;
 
   return (
     <div className="page-body">
@@ -28,13 +33,7 @@ function CatalogPage() {
         <div className="catalog-wrapper container">
           <h1 className="visually-hidden">Каталог товаров</h1>
           <CatalogBreadcrumbs />
-          <ul>
-            {sections.map((it) => (
-              <li key={it._id}>
-                <Link to={it.type}>{it.type}</Link>
-              </li>
-            ))}
-          </ul>
+          <p className="section-subtitle">{name}</p>
         </div>
       </section>
       <Footer />
@@ -42,4 +41,4 @@ function CatalogPage() {
   );
 }
 
-export default CatalogPage;
+export default ProductPage;
