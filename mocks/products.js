@@ -3,7 +3,7 @@ const utils = require("../utils");
 // mongoDB connection
 const mongoose = require("mongoose");
 const MONGO_DB_URI = require("../const").MONGO_DB_URI;
-const MONGO_ATLAS_URI = require("./const").MONGO_ATLAS_URI
+const MONGO_ATLAS_URI = require("../const").MONGO_ATLAS_URI;
 const Product = require("../models/product");
 
 mongoose
@@ -15,12 +15,12 @@ mongoose
     console.log("MongoDB connected...");
 
     TYPES.forEach(async (type) => {
-      const productType = new Product({ name: type });
+      const productType = new Product({ type: type });
       const products = generateProducts(PRODUCT_COUNT, type);
       const vendors = new Set();
 
       products.forEach((product) => {
-        const model = require(`../models/product-item/discriminators/${product.type}`);
+        const model = require(`../models/product-item/discriminators/${type}`);
 
         const newProduct = new model({
           vendor: product.vendor,
@@ -33,6 +33,7 @@ mongoose
           length: product.length,
           fuelCapacity: product.fuelCapacity,
           isCordless: product.isCordless,
+          rating: product.rating,
         });
 
         productType.catalog.push(newProduct);
@@ -43,17 +44,17 @@ mongoose
       productType.count = productType.catalog.length;
 
       await productType
-      .save()
-      .then(() => console.log("product added"))
-      .catch((err) => console.log(err))
-      .finally(() => mongoose.disconnect());
+        .save()
+        .then(() => console.log("product added"))
+        .catch((err) => console.log(err))
+        .finally(() => mongoose.disconnect());
     });
   })
   .catch((err) => console.log(err));
 
 // mock variables
-const PRODUCT_COUNT = 10;
-const TYPES = ["perforator", "drill", "chainsaw", "screwdriver"];
+const PRODUCT_COUNT = 100;
+const TYPES = ['perforator', 'drill', 'chainsaw', 'screwdriver'];
 const VENDORS = ["bosch", "makita", "aeg", "hilti", "dewalt"];
 const MODELS = ["bfg 3000", "bfg 6000", "bfg 9000"];
 
@@ -83,6 +84,7 @@ function generateProducts(count, type) {
       isCordless: Math.random() > 0.5 ? true : false,
       fuelCapacity: getRandomInteger(5, 20),
       length: getRandomInteger(5, 30),
+      rating: getRandomInteger(1, 6),
       price: getRandomInteger(999, 9999),
     };
 
