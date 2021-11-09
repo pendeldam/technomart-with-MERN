@@ -4,14 +4,14 @@ const productController = require('../controllers/catalog');
 
 // @route   GET catalog/:type/:id
 // @desc    get product from the catalog by id
-router.use("/:name/:id", productController.getProduct);
+router.use("/:type/:id", productController.getProductById);
 
 // @route   GET catalog/:id
-// @desc    get catalog section by name
-router.use("/:name", productController.getSection);
+// @desc    get catalog product list by type
+router.use("/:type", productController.getProductsByType);
 
 // @route   GET catalog
-// @desc    get all items from the catalog
-router.use("/", productController.getProducts);
+// @desc    get catalog sections
+router.use("/", productController.getCatalogSections);
 
 module.exports = router;

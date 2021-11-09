@@ -1,39 +1,56 @@
 const Product = require("../models/product");
 
-exports.getProduct = async function (req, res) {
+exports.getProductById = async function (req, res) {
+  const type = req.params.type;
   try {
-    const product = await Product
-      .findOne({ name: req.params.name })
+    const product = await Product.findOne({ type })
       .select("catalog")
       .then((result) => result.catalog.id(req.params.id));
 
-    res.send(product);
+    const result = {
+      content: product,
+      breadcrumbs: [
+        {
+          url: `catalog/${type}`,
+          category: type,
+        },
+        {
+          url: `catalog/${type}/${product._id}`,
+          category: product.name,
+        },
+      ],
+    };
+
+    res.json(result);
   } catch (err) {
     console.log(err);
   }
 };
 
-exports.getSection = async function (req, res) {
+exports.getProductsByType = async function (req, res) {
   try {
-    const product = await Product.findOne({ name: req.params.name });
+    const product = await Product.findOne({ type: req.params.type });
+    const result = {
+      catalog: product.catalog,
+      count: product.count,
+      breadcrumbs: [
+        {
+          url: `catalog/${product.type}`,
+          category: product.category,
+        },
+      ],
+    };
 
-    res.render("catalog", {
-      title: product.name,
-      products: product.catalog,
-    });
+    res.json(result);
   } catch (err) {
     console.log(err);
   }
 };
 
-exports.getProducts = async function (req, res) {
+exports.getCatalogSections = async function (req, res) {
   try {
-    const products = await Product.find();
-
-    res.render("catalog", {
-      title: "Каталог",
-      products: products,
-    });
+    const products = await Product.find({}, { type: 1 });
+    res.json(products);
   } catch (err) {
     console.log(err);
   }

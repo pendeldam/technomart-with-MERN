@@ -13,10 +13,6 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
-// view engine
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "pug");
-
 // mongoDB connection
 const mongoose = require("mongoose");
 const MONGO_DB_URI = require("./const").MONGO_DB_URI;
@@ -31,13 +27,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // routes
-const indexRouter = require("./routes/home");
-const catalogRouter = require("./routes/catalog");
-const cartRouter = require("./routes/cart");
-
-app.use("/", indexRouter);
-app.use("/catalog", catalogRouter);
-app.use("/cart", cartRouter);
-app.use("*", (req, res) => res.render("error"));
+const routes = require('./routes');
+app.use(routes);
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
