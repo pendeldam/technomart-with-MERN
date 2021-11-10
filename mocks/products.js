@@ -1,5 +1,28 @@
 const utils = require("../utils");
 
+// mock variables
+const PRODUCT_COUNT = 10;
+const VENDORS = ["bosch", "makita", "aeg", "hilti", "dewalt"];
+const MODELS = ["bfg 3000", "bfg 6000", "bfg 9000"];
+const TYPES = [
+  {
+    type: "perforator",
+    name: "перфораторы",
+  },
+  {
+    type: "drill",
+    name: "дрели",
+  },
+  {
+    type: "chainsaw",
+    name: "бензопилы",
+  },
+  {
+    type: "screwdriver",
+    name: "шуруповерты",
+  },
+];
+
 // mongoDB connection
 const mongoose = require("mongoose");
 const MONGO_DB_URI = require("../const").MONGO_DB_URI;
@@ -14,7 +37,7 @@ mongoose
   .then(() => {
     console.log("MongoDB connected...");
 
-    TYPES.forEach(async (type) => {
+    TYPES.forEach(async ({type, name}) => {
       const productType = new Product({ type: type });
       const products = generateProducts(PRODUCT_COUNT, type);
       const vendors = new Set();
@@ -23,6 +46,7 @@ mongoose
         const model = require(`../models/product-item/discriminators/${type}`);
 
         const newProduct = new model({
+          _id: product.id,
           vendor: product.vendor,
           model: product.model,
           name: product.name,
@@ -34,6 +58,7 @@ mongoose
           fuelCapacity: product.fuelCapacity,
           isCordless: product.isCordless,
           rating: product.rating,
+          link: product.link,
         });
 
         productType.catalog.push(newProduct);
@@ -42,6 +67,7 @@ mongoose
 
       productType.vendors = [...vendors];
       productType.count = productType.catalog.length;
+      productType.link = { url: type, name: name };
 
       await productType
         .save()
@@ -51,12 +77,6 @@ mongoose
     });
   })
   .catch((err) => console.log(err));
-
-// mock variables
-const PRODUCT_COUNT = 100;
-const TYPES = ['perforator', 'drill', 'chainsaw', 'screwdriver'];
-const VENDORS = ["bosch", "makita", "aeg", "hilti", "dewalt"];
-const MODELS = ["bfg 3000", "bfg 6000", "bfg 9000"];
 
 function getRandomInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
@@ -68,12 +88,14 @@ function getRandomArrayItem(array) {
 
 function generateProducts(count, type) {
   return new Array(count).fill("").map((product) => {
+    const id = mongoose.Types.ObjectId();
     const vendor = getRandomArrayItem(VENDORS);
     const model = `${getRandomArrayItem(MODELS).toUpperCase()}`;
     const name = `${utils.setCapitalLetter(vendor)} ${model}`;
     const image = `${vendor}_${utils.formatImageName(model)}`;
 
     product = {
+      id,
       type,
       vendor,
       model,
@@ -86,6 +108,7 @@ function generateProducts(count, type) {
       length: getRandomInteger(5, 30),
       rating: getRandomInteger(1, 6),
       price: getRandomInteger(999, 9999),
+      link: {url: id, name},
     };
 
     return product;

@@ -20,6 +20,10 @@ const ProductItemSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    link: {
+      url: String,
+      name: String,
+    },
     isNewOffer: Boolean,
     image: String,
     rating: Number,

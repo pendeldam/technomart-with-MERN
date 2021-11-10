@@ -5,6 +5,7 @@ import { AppRoute } from "../../const";
 
 function CatalogBreadcrumbs() {
   const breadcrumbs = useSelector(getBreadcrumbs);
+  let path = AppRoute.CATALOG;
 
   return (
     <ul className="catalog-breadcrumbs">
@@ -24,11 +25,15 @@ function CatalogBreadcrumbs() {
       <li>
         <a href={`/${AppRoute.CATALOG}`}>каталог</a>
       </li>
-      {breadcrumbs.map(({url, category}) => (
-        <li key={url}>
-          <a href={`/${url}`}>{category}</a>
-        </li>
-      ))}
+      {breadcrumbs.map(({ url, name }) => {
+        path += `/${url}`;
+
+        return (
+          <li key={url}>
+            <a href={path}>{name}</a>
+          </li>
+        );
+      })}
     </ul>
   );
 }

@@ -8,7 +8,10 @@ const ProductSchema = new mongoose.Schema({
   },
   vendors: [String],
   count: Number,
-  category: String,
+  link: {
+    url: String,
+    name: String,
+  },
   catalog: [ProductItem.schema],
 });
 
