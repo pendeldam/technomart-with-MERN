@@ -15,7 +15,7 @@ function CatalogSorting() {
         <h2>сортировка:</h2>
         <div className="catalog-sorting__types-wrapper">
           {Object.entries(SortLabels).map(([key, value]) => (
-            <div className="catalog-sorting__type">
+            <div key={key} className="catalog-sorting__type">
               <input
                 className="visually-hidden"
                 type="radio"
@@ -32,7 +32,7 @@ function CatalogSorting() {
         </div>
         <div className="catalog-sorting__direction">
           {Object.values(SortDirection).map((value) => (
-            <div className="catalog-sorting__direction-toggle">
+            <div key={value} className="catalog-sorting__direction-toggle">
               <input
                 className="visually-hidden"
                 id={`sort-direction-${value.toLocaleLowerCase()}`}

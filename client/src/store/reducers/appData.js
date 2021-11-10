@@ -4,17 +4,23 @@ import {
   getProductsByType,
   getCatalogSections,
   setSortType,
-  setSortDirection
+  setSortDirection,
+  setProductListPage
 } from "../actions";
 import { SortTypes, SortDirection } from "../../const";
 
 const initialState = {
-  product: null,
-  products: [],
   sections: [],
+  products: [],
+  productsCount: null,
+  product: null,
   breadcrumbs: [],
   sortType: SortTypes.PRICE,
   sortDirection: SortDirection.ASCEND,
+  pagination: {
+    currentSize: 9,
+    currentPage: 1,
+  },
 };
 
 export const appData = createReducer(initialState, (builder) => {
@@ -25,6 +31,7 @@ export const appData = createReducer(initialState, (builder) => {
     })
     .addCase(getProductsByType, (state, action) => {
       state.products = action.payload.catalog;
+      state.productsCount = action.payload.count;
       state.breadcrumbs = action.payload.breadcrumbs;
     })
     .addCase(getCatalogSections, (state, action) => {
@@ -35,5 +42,8 @@ export const appData = createReducer(initialState, (builder) => {
     })
     .addCase(setSortDirection, (state, action) => {
       state.sortDirection = action.payload;
+    })
+    .addCase(setProductListPage, (state, action) => {
+      state.pagination.currentPage = action.payload;
     });
 });

@@ -7,6 +7,7 @@ export const ActionType = {
   GET_CATALOG_SECTIONS: 'data/GET_CATALOG_SECTIONS',
   SET_SORT_TYPE: 'data/SET_SORT_TYPE',
   SET_SORT_DIRECTION: 'data/SET_SORT_DIRECTION',
+  SET_PRODUCT_LIST_PAGE: 'data/SET_PRODUCT_LIST_PAGE'
 };
 
 export const getProductById = createAction(
@@ -37,4 +38,9 @@ export const setSortType = createAction(
 export const setSortDirection = createAction(
   ActionType.SET_SORT_DIRECTION,
   (direction) => ({payload: direction}),
+);
+
+export const setProductListPage = createAction(
+  ActionType.SET_PRODUCT_LIST_PAGE,
+  (page) => ({payload: page}),
 );
