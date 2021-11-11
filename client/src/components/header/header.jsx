@@ -1,6 +1,16 @@
 import React from "react";
 
 function Header() {
+  const navLinks = [
+    { name: "Главная", url: "/" },
+    { name: "Компания", url: "#" },
+    { name: "Каталог", url: "/catalog" },
+    { name: "Новости", url: "#" },
+    { name: "Спецпредложения", url: "#" },
+    { name: "Доставка", url: "#" },
+    { name: "Контакты", url: "#" },
+  ];
+
   return (
     <header className="main-header">
       <div className="main-header__top-wrapper">
@@ -32,13 +42,13 @@ function Header() {
               </svg>
             </label>
           </form>
-          <a className="main-header__bookmarks" href="/favorites">
+          <a className="main-header__bookmarks" href="#">
             Закладки:&nbsp;<span>0</span>
           </a>
-          <a className="main-header__cart" href="/cart">
+          <a className="main-header__cart" href="#">
             Корзина:&nbsp;<span>0</span>
           </a>
-          <a className="main-header__order" href="/order">
+          <a className="main-header__order" href="#">
             Оформить заказ
           </a>
         </div>
@@ -66,7 +76,7 @@ function Header() {
         </div>
         <div className="main-header__auth">
           <h2 className="visually-hidden">Личный кабинет</h2>
-          <a className="main-header__login-btn" href="blank.html">
+          <a className="main-header__login-btn" href="#">
             <svg
               width="20"
               height="17"
@@ -78,47 +88,19 @@ function Header() {
             </svg>
             Войти
           </a>
-          <a className="main-header__register-btn" href="blank.html">
+          <a className="main-header__register-btn" href="#">
             Регистрация
           </a>
         </div>
         <nav className="main-header__nav">
           <ul className="main-header__nav-list">
-            <li>
-              <a className="nav-link" href="/">
-                Главная
-              </a>
-            </li>
-            <li>
-              <a className="nav-link" href="blank.html">
-                Компания
-              </a>
-            </li>
-            <li>
-              <a className="nav-link" href="catalog.html">
-                Каталог
-              </a>
-            </li>
-            <li>
-              <a className="nav-link" href="blank.html">
-                Новости
-              </a>
-            </li>
-            <li>
-              <a className="nav-link" href="blank.html">
-                Спецпредложения
-              </a>
-            </li>
-            <li>
-              <a className="nav-link" href="blank.html">
-                Доставка
-              </a>
-            </li>
-            <li>
-              <a className="nav-link" href="blank.html">
-                Контакты
-              </a>
-            </li>
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <a className="nav-link" href={link.url}>
+                  {link.name}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

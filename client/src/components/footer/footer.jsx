@@ -1,6 +1,24 @@
 import React from "react";
 
 function Footer() {
+  const navLinks = [
+    { name: "Компания", url: "#" },
+    { name: "Новости", url: "#" },
+    { name: "Каталог", url: "/catalog" },
+    { name: "Доставка", url: "#" },
+    { name: "Контакты", url: "#" },
+    { name: "Материалы", url: "#" },
+    { name: "Техника", url: "#" },
+    { name: "Инструмент", url: "#" },
+    { name: "Спецпредложения", url: "#" },
+  ];
+
+  const socialLinks = [
+    { name: "vk", url: "#" },
+    { name: "fb", url: "#" },
+    { name: "instagram", url: "#" },
+  ];
+
   return (
     <footer className="main-footer">
       <div className="main-footer__top">
@@ -9,7 +27,7 @@ function Footer() {
             <h2 className="visually-hidden">Наш адрес</h2>
             <a
               className="site-logo"
-              href="index.html"
+              href="/"
               aria-label="на главную страницу"
             ></a>
             <p>
@@ -27,53 +45,22 @@ function Footer() {
           <nav className="main-footer__nav">
             <h2 className="visually-hidden">Карта сайта</h2>
             <ul className="main-footer__nav-list">
-              <li>
-                <a className="nav-link" href="blank.html">
-                  Компания
-                </a>
-              </li>
-              <li>
-                <a className="nav-link" href="blank.html">
-                  Новости
-                </a>
-              </li>
-              <li>
-                <a className="nav-link" href="catalog.html">
-                  Каталог
-                </a>
-              </li>
-              <li>
-                <a className="nav-link" href="blank.html">
-                  Доставка
-                </a>
-              </li>
-              <li>
-                <a className="nav-link" href="blank.html">
-                  Контакты
-                </a>
-              </li>
+              {navLinks.slice(0, 5).map((link) => (
+                <li key={link.name}>
+                  <a className="nav-link" href={link.url}>
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
             <ul className="main-footer__nav-list">
-              <li>
-                <a className="nav-link" href="blank.html">
-                  Материалы
-                </a>
-              </li>
-              <li>
-                <a className="nav-link" href="blank.html">
-                  Техника
-                </a>
-              </li>
-              <li>
-                <a className="nav-link" href="blank.html">
-                  Инструмент
-                </a>
-              </li>
-              <li>
-                <a className="nav-link" href="blank.html">
-                  Спецпредложения
-                </a>
-              </li>
+              {navLinks.slice(5).map((link) => (
+                <li key={link.name}>
+                  <a className="nav-link" href={link.url}>
+                    {link.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
         </div>
@@ -86,25 +73,18 @@ function Footer() {
           </div>
           <div className="main-footer__social-links">
             <h2 className="visually-hidden">Мы в Интернете</h2>
-            <a
-              className="social-link-vk"
-              href="#"
-              aria-label="мы вконтакте"
-            ></a>
-            <a
-              className="social-link-fb"
-              href="#"
-              aria-label="мы в facebook"
-            ></a>
-            <a
-              className="social-link-insta"
-              href="#"
-              aria-label="мы в instagram"
-            ></a>
+            {socialLinks.map((link) => (
+              <a
+                className={`social-link-${link.name}`}
+                href={link.url}
+                aria-label={link.name}
+              />
+            ))}
           </div>
           <div className="main-footer__support-contacts">
             <p>
-              Обратная связь:
+              Обратная&nbsp;связь:
+              <br />
               <a
                 className="host-mail"
                 href="mailto:mail@htmlacademy.ru"
@@ -114,7 +94,7 @@ function Footer() {
               </a>
             </p>
             <p>
-              Разработано &mdash;
+              Разработано&nbsp;&mdash;
               <a
                 className="dev-site"
                 href="https://htmlacademy.ru/intensive/htmlcss"
