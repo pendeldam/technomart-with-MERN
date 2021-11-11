@@ -1,8 +1,6 @@
 import Header from "../header/header";
 import Features from "../features/features";
-import ProductCard from "../product-card/product-card";
 import Footer from "../footer/footer";
-import { popularGoods } from "../../mocks";
 
 function MainPage() {
   return (
@@ -17,11 +15,6 @@ function MainPage() {
             все популярные товары
           </a>
         </div>
-        <ul className="popular-goods-list">
-          {popularGoods.map((card) => (
-            <ProductCard key={card.id} card={card} />
-          ))}
-        </ul>
       </section>
       <Footer />
     </div>
