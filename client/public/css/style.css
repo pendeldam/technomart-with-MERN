@@ -197,7 +197,8 @@ img {
 .features-list,
 .popular-goods-list,
 .popular-vendors-list,
-.services-list {
+.services-list,
+.catalog-list {
   list-style: none;
 }
 
@@ -798,17 +799,20 @@ img {
   padding: 0;
 }
 
-.popular-vendors-list {
+.popular-vendors-list,
+.catalog-list {
   padding: 0;
   display: grid;
   gap: 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.popular-vendors-list__item {
+.popular-vendors-list__item,
+.catalog-list__item {
   width: 220px;
   height: 145px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border: 1px var(--basic-neutral) solid;
@@ -817,15 +821,32 @@ img {
   padding-left: 3px;
 }
 
-.popular-vendors-list__item img {
+.popular-vendors-list__item img,
+.catalog-list__image {
   object-fit: contain;
 }
 
-.popular-vendors-list__item:hover {
+.catalog-list__item {
+  height: 150px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.catalog-list__image {
+  width: 200px;
+  height: 120px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+
+.popular-vendors-list__item:hover,
+.catalog-list__item:hover {
   box-shadow: 0px 4px 20px var(--transparent-black);
 }
 
-.popular-vendors-list__item:active {
+.popular-vendors-list__item:active,
+.catalog-list__item:active {
   opacity: 0.5;
 }
 
@@ -1758,7 +1779,7 @@ img {
   background: url("../img/icons/social/fb.png") no-repeat center;
 }
 
-.social-link-insta {
+.social-link-instagram {
   background: url("../img/icons/social/instagram.png") no-repeat center;
 }
 
